@@ -35,10 +35,12 @@ function add(scheme) {
 }
 
 function add(step, scheme_id) {
-  return db("steps as st")
-    .join("schemes as sc", "st.scheme_id", "sc.id")
-    .insert(step, scheme_id)
-    .where("st.scheme_id", scheme_id);
+  return (
+    db("steps")
+      // .join("schemes as sc", "st.scheme_id", "sc.id")
+      .insert(step, scheme_id)
+      .where("scheme_id", scheme_id)
+  );
   // .then(([id]) =>{
 
   // })
